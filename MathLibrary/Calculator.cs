@@ -6,6 +6,15 @@ namespace MathLibrary;
 /// </summary>
 public static class Calculator
 {
+    // кэш факториалов для быстрых повторных вызовов (0! .. 20!)
+    private static readonly double[] s_smallFacts = new double[]
+    {
+        1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880,
+        3628800, 39916800, 479001600, 6227020800, 87178291200,
+        1307674368000, 20922789888000, 355687428096000, 6402373705728000,
+        121645100408832000, 2432902008176640000
+    };
+
     /// <summary>
     /// Складывает два числа.
     /// </summary>
@@ -94,20 +103,11 @@ public static class Calculator
         if (n > 170)
             throw new OverflowException("Результат слишком велик для типа double.");
 
-        // кэширование для небольших n
-        double[] smallFacts =
-        {
-            1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880,
-            3628800, 39916800, 479001600, 6227020800, 87178291200,
-            1307674368000, 20922789888000, 355687428096000, 6402373705728000,
-            121645100408832000, 2432902008176640000
-        };
+        if (n < s_smallFacts.Length)
+            return s_smallFacts[n];
 
-        if (n < smallFacts.Length)
-            return smallFacts[n];
-
-        double result = smallFacts[^1];
-        for (int i = smallFacts.Length; i <= n; i++)
+        double result = s_smallFacts[^1];
+        for (int i = s_smallFacts.Length; i <= n; i++)
             result *= i;
 
         return result;
