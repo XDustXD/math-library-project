@@ -41,12 +41,11 @@ public static class Calculator
     {
         if (number <= 1) return false;
 
-        // отрицательные числа не считаются простыми
-        if (number < 0)
-            return false;
+        if (number == 2) return true;
+        if (number % 2 == 0) return false;
 
         int limit = (int)Math.Sqrt(number);
-        for (int i = 2; i <= limit; i++)
+        for (int i = 3; i <= limit; i += 2)
             if (number % i == 0) return false;
 
         return true;
@@ -67,19 +66,20 @@ public static class Calculator
         if (power % 1 != 0)
             throw new NotSupportedException("Показатель степени должен быть целым числом.");
 
-        double result = 1;
-        if (power > 0)
+        // быстрый алгоритм: экспоненциальное возведение в степень
+        long exp = (long)power;
+        bool negative = exp < 0;
+        exp = Math.Abs(exp);
+        double res = 1;
+        double baseVal = number;
+        while (exp > 0)
         {
-            for (int i = 1; i <= (int)power; i++)
-                result *= number;
+            if ((exp & 1) == 1)
+                res *= baseVal;
+            baseVal *= baseVal;
+            exp >>= 1;
         }
-        else if (power < 0)
-        {
-            for (int i = 1; i <= (int)(-power); i++)
-                result /= number;
-        }
-
-        return result;
+        return negative ? 1 / res : res;
     }
 
     /// <summary>
@@ -91,11 +91,23 @@ public static class Calculator
             throw new ArgumentOutOfRangeException(nameof(n), "Факториал не определен для отрицательных чисел.");
 
         // пример простой защиты от переполнения в double
-        if (n > 170) 
+        if (n > 170)
             throw new OverflowException("Результат слишком велик для типа double.");
 
-        double result = 1;
-        for (int i = 2; i <= n; i++)
+        // кэширование для небольших n
+        double[] smallFacts =
+        {
+            1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880,
+            3628800, 39916800, 479001600, 6227020800, 87178291200,
+            1307674368000, 20922789888000, 355687428096000, 6402373705728000,
+            121645100408832000, 2432902008176640000
+        };
+
+        if (n < smallFacts.Length)
+            return smallFacts[n];
+
+        double result = smallFacts[^1];
+        for (int i = smallFacts.Length; i <= n; i++)
             result *= i;
 
         return result;
