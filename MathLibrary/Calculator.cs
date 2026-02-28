@@ -142,4 +142,78 @@ public static class Calculator
         x2 = (-b - sqrtD) / denominator;
         return true; // Возвращаем дискриминант для информации
     }
+
+    public static double CircleArea(double radius)
+    {
+        if (double.IsNaN(radius))
+            throw new ArgumentException("Радиус не может быть NaN.", nameof(radius));
+        if (double.IsInfinity(radius))
+            throw new ArgumentException("Радиус не может быть бесконечным.", nameof(radius));
+        if (radius < 0)
+            throw new ArgumentOutOfRangeException(nameof(radius), "Радиус не может быть отрицательным.");
+
+        return Math.PI * radius * radius;
+    }
+
+    public enum TemperatureScale
+    {
+        Celsius,
+        Fahrenheit,
+        Kelvin
+    }
+
+    public static double ConvertTemperature(double value, TemperatureScale from, TemperatureScale to)
+    {
+        if (double.IsNaN(value))
+            throw new ArgumentException("Температура не может быть NaN.", nameof(value));
+        if (double.IsInfinity(value))
+            throw new ArgumentException("Температура не может быть бесконечной.", nameof(value));
+
+        if (from == to) return value;
+
+        double celsius = from switch
+        {
+            TemperatureScale.Celsius => value,
+            TemperatureScale.Fahrenheit => (value - 32) * 5.0 / 9.0,
+            TemperatureScale.Kelvin => value - 273.15,
+            _ => throw new ArgumentException("Неизвестная шкала температуры.", nameof(from))
+        };
+
+        if (celsius < -273.15)
+            throw new ArgumentOutOfRangeException(nameof(value), "Температура ниже абсолютного нуля.");
+
+        return to switch
+        {
+            TemperatureScale.Celsius => celsius,
+            TemperatureScale.Fahrenheit => celsius * 9.0 / 5.0 + 32,
+            TemperatureScale.Kelvin => celsius + 273.15,
+            _ => throw new ArgumentException("Неизвестная шкала температуры.", nameof(to))
+        };
+    }
+
+    public static double Hypotenuse(double a, double b)
+    {
+        if (double.IsNaN(a) || double.IsNaN(b))
+            throw new ArgumentException("Стороны не могут быть NaN.");
+        if (double.IsInfinity(a) || double.IsInfinity(b))
+            throw new ArgumentException("Стороны не могут быть бесконечными.");
+
+        double absA = Math.Abs(a);
+        double absB = Math.Abs(b);
+
+        if (absA < absB)
+        {
+            double ratio = absA / absB;
+            return absB * Math.Sqrt(1 + ratio * ratio);
+        }
+        else if (absA > 0)
+        {
+            double ratio = absB / absA;
+            return absA * Math.Sqrt(1 + ratio * ratio);
+        }
+        else
+        {
+            return 0;
+        }
+    }
 }
