@@ -1,0 +1,11 @@
+/Users/xdustxd/aspnet/Mathclasslib/MathLibrary/bin/Debug/net10.0/MathLibrary.deps.json
+/Users/xdustxd/aspnet/Mathclasslib/MathLibrary/bin/Debug/net10.0/MathLibrary.dll
+/Users/xdustxd/aspnet/Mathclasslib/MathLibrary/bin/Debug/net10.0/MathLibrary.pdb
+/Users/xdustxd/aspnet/Mathclasslib/MathLibrary/obj/Debug/net10.0/MathLibrary.GeneratedMSBuildEditorConfig.editorconfig
+/Users/xdustxd/aspnet/Mathclasslib/MathLibrary/obj/Debug/net10.0/MathLibrary.AssemblyInfoInputs.cache
+/Users/xdustxd/aspnet/Mathclasslib/MathLibrary/obj/Debug/net10.0/MathLibrary.AssemblyInfo.cs
+/Users/xdustxd/aspnet/Mathclasslib/MathLibrary/obj/Debug/net10.0/MathLibrary.csproj.CoreCompileInputs.cache
+/Users/xdustxd/aspnet/Mathclasslib/MathLibrary/obj/Debug/net10.0/MathLibrary.dll
+/Users/xdustxd/aspnet/Mathclasslib/MathLibrary/obj/Debug/net10.0/refint/MathLibrary.dll
+/Users/xdustxd/aspnet/Mathclasslib/MathLibrary/obj/Debug/net10.0/MathLibrary.pdb
+/Users/xdustxd/aspnet/Mathclasslib/MathLibrary/obj/Debug/net10.0/ref/MathLibrary.dll
