@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/xdustxd/aspnet/Mathclasslib/MathLibrary.Client/MathLibrary.Client.csproj",
+      "projectUniqueName": "/Users/xdustxd/college/mdk0102/Git/MathLibraryProject/MathLibrary.Client/MathLibrary.Client.csproj",
       "projectName": "MathLibrary.Client",
-      "projectPath": "/Users/xdustxd/aspnet/Mathclasslib/MathLibrary.Client/MathLibrary.Client.csproj",
+      "projectPath": "/Users/xdustxd/college/mdk0102/Git/MathLibraryProject/MathLibrary.Client/MathLibrary.Client.csproj",
       "packagesPath": "/Users/xdustxd/.nuget/packages/",
-      "outputPath": "/Users/xdustxd/aspnet/Mathclasslib/MathLibrary.Client/obj/",
+      "outputPath": "/Users/xdustxd/college/mdk0102/Git/MathLibraryProject/MathLibrary.Client/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/xdustxd/.nuget/NuGet/NuGet.Config"
@@ -51,8 +51,8 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "/Users/xdustxd/aspnet/Mathclasslib/MathLibrary/MathLibrary.csproj": {
-              "projectPath": "/Users/xdustxd/aspnet/Mathclasslib/MathLibrary/MathLibrary.csproj"
+            "/Users/xdustxd/college/mdk0102/Git/MathLibraryProject/MathLibrary/MathLibrary.csproj": {
+              "projectPath": "/Users/xdustxd/college/mdk0102/Git/MathLibraryProject/MathLibrary/MathLibrary.csproj"
             }
           }
         }

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/xdustxd/aspnet/Mathclasslib/MathLibrary/MathLibrary.csproj",
+      "projectUniqueName": "/Users/xdustxd/college/mdk0102/Git/MathLibraryProject/MathLibrary/MathLibrary.csproj",
       "projectName": "MathLibrary",
-      "projectPath": "/Users/xdustxd/aspnet/Mathclasslib/MathLibrary/MathLibrary.csproj",
+      "projectPath": "/Users/xdustxd/college/mdk0102/Git/MathLibraryProject/MathLibrary/MathLibrary.csproj",
       "packagesPath": "/Users/xdustxd/.nuget/packages/",
-      "outputPath": "/Users/xdustxd/aspnet/Mathclasslib/MathLibrary/obj/",
+      "outputPath": "/Users/xdustxd/college/mdk0102/Git/MathLibraryProject/MathLibrary/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/xdustxd/.nuget/NuGet/NuGet.Config"
