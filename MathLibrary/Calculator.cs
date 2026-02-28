@@ -23,8 +23,14 @@ public static class Calculator
     /// </summary>
     public static double Divide(double a, double b)
     {
+        if (double.IsNaN(a) || double.IsNaN(b))
+            throw new ArgumentException("Аргументы не могут быть NaN.");
+
         if (b == 0)
             throw new DivideByZeroException("Делитель не может быть равен нулю.");
+
+        if (double.IsInfinity(a) || double.IsInfinity(b))
+            throw new ArgumentException("Аргументы не могут быть бесконечными.");
 
         return a / b;
     }
@@ -34,6 +40,10 @@ public static class Calculator
     public static bool IsPrime(int number)
     {
         if (number <= 1) return false;
+
+        // отрицательные числа не считаются простыми
+        if (number < 0)
+            return false;
 
         int limit = (int)Math.Sqrt(number);
         for (int i = 2; i <= limit; i++)
@@ -47,14 +57,27 @@ public static class Calculator
     /// </summary>
     public static double Power(double number, double power)
     {
+        if (double.IsNaN(number) || double.IsNaN(power))
+            throw new ArgumentException("Аргументы не могут быть NaN.");
+
+        if (double.IsInfinity(number) || double.IsInfinity(power))
+            throw new ArgumentException("Аргументы не могут быть бесконечными.");
+
+        // метод реализован только для целого показателя
+        if (power % 1 != 0)
+            throw new NotSupportedException("Показатель степени должен быть целым числом.");
+
         double result = 1;
         if (power > 0)
-            for(int i = 1; i <= power; i++)
+        {
+            for (int i = 1; i <= (int)power; i++)
                 result *= number;
-
+        }
         else if (power < 0)
-            for(int i = 1; i <= -power; i++)
+        {
+            for (int i = 1; i <= (int)(-power); i++)
                 result /= number;
+        }
 
         return result;
     }
@@ -64,7 +87,12 @@ public static class Calculator
     /// </summary>
     public static double Factorial(int n)
     {
-        if (n < 0) throw new ArgumentException("Факториал не определен для отрицательных чисел.");
+        if (n < 0)
+            throw new ArgumentOutOfRangeException(nameof(n), "Факториал не определен для отрицательных чисел.");
+
+        // пример простой защиты от переполнения в double
+        if (n > 170) 
+            throw new OverflowException("Результат слишком велик для типа double.");
 
         double result = 1;
         for (int i = 2; i <= n; i++)
@@ -78,8 +106,14 @@ public static class Calculator
     /// </summary>
     public static bool SolveQuadratic(double a, double b, double c, out double? x1, out double? x2)
     {
+        if (double.IsNaN(a) || double.IsNaN(b) || double.IsNaN(c))
+            throw new ArgumentException("Коэффициенты не могут быть NaN.");
+
         if (a == 0)
-            throw new ArgumentException("Коэффициент 'a' не может быть равен нулю.");
+            throw new ArgumentOutOfRangeException(nameof(a), "Коэффициент 'a' не может быть равен нулю.");
+
+        if (double.IsInfinity(a) || double.IsInfinity(b) || double.IsInfinity(c))
+            throw new ArgumentException("Коэффициенты не могут быть бесконечными.");
 
         double discriminant = b * b - 4 * a * c;
 
